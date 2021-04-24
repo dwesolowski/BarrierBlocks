@@ -1,0 +1,29 @@
+name: BarrierBlocks
+version: ${version}
+api-version: ${api-version}
+main: com.github.dwesolowski.barrierblocks.BarrierBlocks
+depend: [GriefPrevention]
+
+commands:
+  barrier:
+    description: Purchase barrier blocks.
+    aliases: [bb]
+    usage: |
+      /<command> [args] || [args] [#]
+      Ex: /barrier - Usage
+      Ex: /barrier Buy 1 - Purchase 1 barreir block.
+      Ex: /barrier accept || deny - Confirm your purchase.
+
+permissions:
+  barrierblocks.barrier:
+    description: Allow access to /barrier
+    default: false
+  barrierblocks.admin:
+    description: Allow access to /barrier reload
+    default: op
+
+  barrierblocks.*:
+    description: Gives access to all Basics commands
+    children:
+      barrierblocks.barrier: true
+      barrierblocks.admin: true

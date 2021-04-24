@@ -1,0 +1,42 @@
+## language.yml
+# All messages in this file support color codes with either & or §.
+# To disable a message, simply leave it blank.
+
+InvalidSender: "&cOnly in-game players can use this command!"
+
+NoPermission: "&cYou do not have permission to perform this command!"
+
+ConfigReloaded: "&aThe Configuration Files have been reloaded!"
+
+InvalidArgument: "&f{ARGS} &cis not a number!"
+
+InvalidNumber: "&cAmount must be greater than &f0."
+
+InvalidBalance: "&cYou do not have enough &f{MATERIAL}s &cto buy &f{AMOUNT} barrier block(s)."
+
+FullInventory: "&cYou do not have enough space to carry barrier blocks."
+
+ConfirmAccept: "&6You have accepted the transaction."
+
+ConfirmDeny: "&cYou have declined the transaction."
+
+NoPending: "&cNo active transactions. &6Type &f/barrier."
+
+NoBreakPerms: "&cYou do not have permission to break this barrier!"
+
+NoPlacePerms: "&cBarriers are only allowed in your land claims!."
+
+CommandHelp:
+  - "&e--------- &fHelp: /barrier &e----------------------"
+  - "&6/barrier: &fReturns these help messages."
+  - "&6The cost of &f{AMOUNT} barrier block(s) &6is &f{COST} {MATERIAL}(s)."
+  - "&6/barrier buy [&f#&6]: &fAllows you to buy barrier blocks."
+  - "&6/barrier accept: &fWill accept a pending transaction."
+  - "&6/barrier deny: &fWill decline a pending transaction."
+  - "&6Barrier block(s) can be broke using a &f{ITEM}."
+  - "&6Barrier block(s) are only allowed in land claims!"
+
+Confirmation:
+  - "&6Pay &f{COST} {MATERIAL}(s) &6for &f{AMOUNT} barrier block(s)?"
+  - "&6Type &f/barrier accept &6to accept or type &f/barrier deny &6to decline."
+  - "&6This transaction will expire in one minute."

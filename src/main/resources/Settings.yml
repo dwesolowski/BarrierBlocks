@@ -1,0 +1,10 @@
+## settings.yml
+
+# Item used for cost and amount required.
+cost:
+  type: DIAMOND
+  amount: 1
+# The amount of barrier blocks per purchase.
+purchaseQuantity: 1
+# Item used to break barrier blocks in game.
+breakMaterial: GOLDEN_PICKAXE
