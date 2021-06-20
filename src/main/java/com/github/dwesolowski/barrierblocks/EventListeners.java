@@ -2,6 +2,8 @@ package com.github.dwesolowski.barrierblocks;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -14,21 +16,22 @@ public class EventListeners implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e) {
-        if (e.hasItem() && (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) &&
-                e.getClickedBlock().getType() == Material.BARRIER) {
-            Location location = e.getPlayer().getLocation();
-            if (GriefPreventionHook.hasClaimAtLocation(e.getPlayer(), location)) {
-                if (GriefPreventionHook.isOwnerAtLocation(e.getPlayer(), location)) {
+        Block b = e.getClickedBlock();
+        if (e.hasItem() && (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) && b.getType() == Material.BARRIER) {
+            Player p = e.getPlayer();
+            Location location = b.getLocation();
+            if (GriefPreventionHook.hasClaimAtLocation(p, location)) {
+                if (GriefPreventionHook.isOwnerAtLocation(p, location)) {
                     if (e.getItem().getType() == BarrierBlocks.settings().getBreakMaterial()) {
-                        e.getClickedBlock().breakNaturally();
-                        e.getClickedBlock().getWorld().dropItemNaturally(e.getClickedBlock().getLocation(), new ItemStack(Material.BARRIER));
+                        b.breakNaturally();
+                        b.getWorld().dropItemNaturally(location, new ItemStack(Material.BARRIER));
                     }
                 } else {
-                    e.getPlayer().sendMessage(BarrierBlocks.language().noBreakPerms());
                     e.setCancelled(true);
+                    p.sendMessage(BarrierBlocks.language().noBreakPerms());
                 }
             } else {
-                e.getClickedBlock().setType(Material.AIR);
+                b.setType(Material.AIR);
             }
         }
     }
@@ -36,10 +39,11 @@ public class EventListeners implements Listener {
     @EventHandler
     public void onItemPlace(BlockPlaceEvent e) {
         if (e.getBlockPlaced().getType().equals(Material.BARRIER)) {
-            Location location = e.getPlayer().getLocation();
-            if (!GriefPreventionHook.isOwnerAtLocation(e.getPlayer(), location)) {
-                e.getPlayer().sendMessage(BarrierBlocks.language().noPlacePerms());
+            Player p = e.getPlayer();
+            Location location = e.getBlockPlaced().getLocation();
+            if (!GriefPreventionHook.hasClaimAtLocation(p, location)) {
                 e.setCancelled(true);
+                p.sendMessage(BarrierBlocks.language().noPlacePerms());
             }
         }
     }
