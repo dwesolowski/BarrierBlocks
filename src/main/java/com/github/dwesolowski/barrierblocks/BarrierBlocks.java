@@ -13,10 +13,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.concurrent.TimeUnit;
 
 public class BarrierBlocks extends JavaPlugin implements Listener {
+    public static final Cache<Player, ItemStack[]> confirmations = CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).build();
     private static Language language;
     private static Settings settings;
 
-    public static final Cache<Player, ItemStack[]> confirmations = CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).build();
+    public static void reload() {
+        settings.reload();
+        language.reload();
+    }
+
+    public static Settings settings() {
+        return settings;
+    }
+
+    public static Language language() {
+        return language;
+    }
 
     @Override
     public void onEnable() {
@@ -28,22 +40,9 @@ public class BarrierBlocks extends JavaPlugin implements Listener {
         getCommand("barrier").setExecutor(new Barrier());
     }
 
-    public static void reload() {
-        settings.reload();
-        language.reload();
-    }
-
     @Override
     public void onDisable() {
         language = null;
         settings = null;
-    }
-
-    public static Settings settings() {
-        return settings;
-    }
-
-    public static Language language() {
-        return language;
     }
 }

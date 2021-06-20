@@ -96,7 +96,7 @@ public class Barrier implements CommandExecutor {
         return false;
     }
 
-    private boolean fullInventory(Player p, int amount){
+    private boolean fullInventory(Player p, int amount) {
         int index = p.getInventory().firstEmpty();
         if (index == -1)
             index = p.getInventory().first(Material.BARRIER);
