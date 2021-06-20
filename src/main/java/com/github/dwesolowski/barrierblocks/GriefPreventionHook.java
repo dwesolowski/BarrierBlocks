@@ -11,7 +11,7 @@ public class GriefPreventionHook extends JavaPlugin {
 
     public static Claim getClaimAtLocation(final Player p, final Location loc) {
         final PlayerData playerData = GriefPrevention.instance.dataStore.getPlayerData(p.getUniqueId());
-        return GriefPrevention.instance.dataStore.getClaimAt(loc,false, playerData.lastClaim);
+        return GriefPrevention.instance.dataStore.getClaimAt(loc, true, playerData.lastClaim);
     }
 
     public static boolean hasClaimAtLocation(final Player p, final Location loc) {
