@@ -1,5 +1,6 @@
 package com.github.dwesolowski.barrierblocks;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -29,6 +30,10 @@ public class EventListeners implements Listener {
                 } else {
                     e.setCancelled(true);
                     p.sendMessage(BarrierBlocks.language().noBreakPerms());
+
+                    if (p.getGameMode() == GameMode.CREATIVE) {
+                        p.sendMessage(BarrierBlocks.language().warningCreative());
+                    }
                 }
             } else {
                 b.setType(Material.AIR);
@@ -44,6 +49,10 @@ public class EventListeners implements Listener {
             if (!GriefPreventionHook.hasClaimAtLocation(p, location)) {
                 e.setCancelled(true);
                 p.sendMessage(BarrierBlocks.language().noPlacePerms());
+
+                if (p.getGameMode() == GameMode.CREATIVE) {
+                    p.sendMessage(BarrierBlocks.language().warningCreative());
+                }
             }
         }
     }

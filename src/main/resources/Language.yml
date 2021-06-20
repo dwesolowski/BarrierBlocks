@@ -26,6 +26,8 @@ NoBreakPerms: "&cYou do not have permission to break this barrier!"
 
 NoPlacePerms: "&cBarriers are only allowed in your land claims!."
 
+WarningCreative: "&eCreative mode can cause visual errors with the plugin BarrierBlocks!"
+
 CommandHelp:
   - "&e--------- &fHelp: /barrier &e----------------------"
   - "&6/barrier: &fReturns these help messages."

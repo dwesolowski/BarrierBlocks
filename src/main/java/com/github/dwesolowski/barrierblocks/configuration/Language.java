@@ -11,7 +11,7 @@ import java.util.List;
 public class Language extends YamlConfig {
 
     private String INVALID_SENDER, NO_PERMISSIONS, CONFIG_RELOADED, NO_PENDING, FULL_INVENTORY, INVALID_BALANCE, CONFIRM_ACCEPT,
-            CONFIRM_DENY, INVALID_ARGUMENT, INVALID_NUMBER, NO_BREAK_PERMS, NO_PLACE_PERMS;
+            CONFIRM_DENY, INVALID_ARGUMENT, INVALID_NUMBER, NO_BREAK_PERMS, NO_PLACE_PERMS, WARNING_CREATIVE;
 
     public List<String> COMMAND_HELP, CONFIRMATION;
 
@@ -49,6 +49,8 @@ public class Language extends YamlConfig {
         COMMAND_HELP = config.getStringList("CommandHelp");
 
         CONFIRMATION = config.getStringList("Confirmation");
+
+        WARNING_CREATIVE = getValue(config, "WarningCreative");
     }
 
     public String invalidSender() {
@@ -97,6 +99,10 @@ public class Language extends YamlConfig {
 
     public String noPlacePerms() {
         return NO_PLACE_PERMS;
+    }
+
+    public String warningCreative() {
+        return WARNING_CREATIVE;
     }
 
     public List<String> getCommandHelp() {
